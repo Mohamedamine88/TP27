@@ -200,10 +200,11 @@ Invoke-RestMethod -Uri http://localhost:8081/api/books
 
 ---
 
-## Conclusion Générale
+## Conclusion
 
-- Résilience assurée avec **Resilience4j**
-- Fallback fonctionnel en cas de panne externe
-- Gestion correcte de la concurrence
-- Données cohérentes et fiables
-- Architecture robuste et prête pour un environnement distribué
+- En multi-instances, l’absence de verrou DB peut provoquer des **race conditions** et des incohérences de stock.
+- Le verrou pessimiste force une **sérialisation des accès** et garantit l’atomicité et la cohérence des données.
+- Le **Circuit Breaker** protège le système en bloquant les appels vers un service externe défaillant.
+- Il évite les pannes en cascade et la saturation des ressources.
+- Le **fallback** permet un fonctionnement dégradé, assurant disponibilité et résilience.
+
